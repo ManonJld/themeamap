@@ -4,6 +4,7 @@
  * CPT Producer
  */
 
+use Carbon_Fields\Block;
 use Carbon_Fields\Container;
 use Carbon_Fields\Field;
 
@@ -59,4 +60,37 @@ function producer_register_fields(){
             Field::make('text', 'address', 'Adresse'),
             Field::make('text', 'phone_number', 'Numéro de téléphone')
         ]);
+
+// création du block Gutenberg
+    Block::make('Liste des employés')
+        ->add_fields([
+            Field::make_text('title', 'Titre')
+        ])
+        ->set_category('wpamap', 'Amap')
+        ->set_icon('groups')
+        ->set_render_callback(function($fields) {
+            $query = new WP_Query([
+                'post_type' => 'producer',
+                'post_per_page' => -1 // Pour retirer la pagination et récupérer toues les employés
+            ]);
+
+            ?>
+            <h2><?= esc_html($fields['title']); ?></h2>
+            <?php
+
+            while($query->have_posts()){
+                $query->the_post();
+                ?>
+                <div>
+                    <h2><?php the_title(); ?></h2>
+                    <?php the_post_thumbnail('large'); ?>
+
+
+                </div>
+                <?php
+            }
+            wp_reset_postdata(); //à mettre après une boucle avec wp_query
+        })
+    ;
+
     }
