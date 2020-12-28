@@ -1,7 +1,7 @@
 <?php
 
 /**
- * CPT Recipe
+ * CPT farmproduct
  */
 add_action('init', 'farm_product_cpt_init');
 function farm_product_cpt_init()
@@ -20,7 +20,7 @@ function farm_product_cpt_init()
             'view_item' => __('Voir produit', 'wpamap'),
             'all_items' => __('Tous les produits', 'wpamap'),
             'search_items' => __('Rechercher des produits', 'wpamap'),
-            'parent_item_colon' => __('Recette parent :', 'wpamap'),
+            'parent_item_colon' => __('Produit parent :', 'wpamap'),
             'not_found' => __('Aucun produit trouvé.', 'wpamap'),
             'not_found_in_trash' => __('Aucun produit trouvé dans la corbeille.', 'wpamap'),
             'featured_image' => _x('Image à la une produit', 'Overrides the “Featured Image” phrase for this post type. Added in 4.3', 'wpamap'),

@@ -1,9 +1,16 @@
 <?php
 
+use Carbon_Fields\Carbon_Fields;
+
+require_once ('vendor/autoload.php');
 require_once __DIR__ . '/cpt/farmproduct.php';
+require_once __DIR__ . '/cpt/producer.php';
 
 
-
+add_action( 'after_setup_theme', 'crb_load' );
+function crb_load() {
+    Carbon_Fields::boot();
+}
 
 add_action('wp_enqueue_scripts', 'theme_amap_enqueue_styles');
 function theme_amap_enqueue_styles() {
