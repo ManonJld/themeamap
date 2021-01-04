@@ -6,6 +6,14 @@ require_once ('vendor/autoload.php');
 require_once __DIR__ . '/cpt/farmproduct.php';
 require_once __DIR__ . '/cpt/producer.php';
 
+if(WP_DEBUG) {
+    add_action('wp_footer', 'show_template');
+}
+
+function show_template() {
+    global $template;
+    printf('<div style="display: inline-block;background-color: red; color: #FFF; position: fixed; bottom: 0; left: 0; z-index: 9999; padding: 5px 10px; font-size: 10px;">%s</div>',$template);
+}
 
 add_action( 'after_setup_theme', 'crb_load' );
 function crb_load() {

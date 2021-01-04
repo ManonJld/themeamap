@@ -3,6 +3,10 @@
 /**
  * CPT farmproduct
  */
+
+use Carbon_Fields\Container;
+use Carbon_Fields\Field;
+
 add_action('init', 'farm_product_cpt_init');
 function farm_product_cpt_init()
 {
@@ -38,7 +42,7 @@ function farm_product_cpt_init()
         'public' => true,
         'has_archive' => true,
         'rewrite' => ['slug' => 'produit'],
-        'supports' => ['title', 'editor', 'thumbnail', 'excerpt'],
+        'supports' => ['title', 'thumbnail'],
     ]);
 
 
@@ -48,4 +52,21 @@ function farm_product_cpt_init()
         'rewrite' => ['slug' => 'type'],
         'hierarchical' => true
     ]);
+}
+
+/**
+ * Ajouter des champs personnalisé (Custom Fields) sur les produits (post type "farmproduct")
+ */
+add_action('carbon_fields_register_fields', 'farmproduct_register_fields');
+function farmproduct_register_fields()
+{
+    Container::make_post_meta('Infos produits')
+        ->where('post_type', '=', 'farmproduct')
+        ->add_fields([
+           Field::make_association('produce_by', 'Produit par')
+            ->set_types([[
+                'type' => 'post',
+                'post_type' => 'producer'
+            ]])
+        ]);
 }

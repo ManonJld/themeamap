@@ -46,6 +46,12 @@ function producer_cpt_init()
         'supports' => ['title', 'editor', 'thumbnail', 'excerpt'],
     ]);
 
+    register_taxonomy('production', ['producer'], [
+            'label' => 'Type de production',
+            'rewrite' => ['slug' => 'production'],
+            'hierarchical' => false
+    ]);
+
 }
 
 
@@ -62,7 +68,7 @@ function producer_register_fields(){
         ]);
 
 // création du block Gutenberg
-    Block::make('Liste des employés')
+    Block::make('Liste des producteurs')
         ->add_fields([
             Field::make_text('title', 'Titre')
         ])
@@ -71,7 +77,7 @@ function producer_register_fields(){
         ->set_render_callback(function($fields) {
             $query = new WP_Query([
                 'post_type' => 'producer',
-                'post_per_page' => -1 // Pour retirer la pagination et récupérer toues les employés
+                'post_per_page' => -1 // Pour retirer la pagination et récupérer tous les producteurs
             ]);
 
             ?>
@@ -82,10 +88,9 @@ function producer_register_fields(){
                 $query->the_post();
                 ?>
                 <div>
-                    <h2><?php the_title(); ?></h2>
-                    <?php the_post_thumbnail('large'); ?>
-
-
+                    <a href="<?php the_permalink(); ?>"><h2><?php the_title(); ?></h2></a>
+                    <?php the_post_thumbnail('medium'); ?>
+                    <?php the_terms(get_the_ID(), 'production', '<span>', ',', '</span>'); ?>
                 </div>
                 <?php
             }
