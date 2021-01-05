@@ -1,8 +1,8 @@
 
 
-<footer class="footer">
-    <nav class="navbar fixed-bottom navbar-expand-md navbar-light bg-light">
-        <div class="container d-flex justify-content-around">
+<footer class="footer mt-4">
+    <nav class="navbar navbar-expand-md navbar-light footer-bg">
+        <div class="container d-flex justify-content-between">
             <?php if (has_nav_menu('menu-footer')): ?>
                 <?php
             wp_nav_menu([
@@ -13,7 +13,9 @@
                     'walker'            => new WP_Bootstrap_Navwalker(),
             ])
                 ; ?>
-
+            <?php endif; ?>
+            <?php if (is_active_sidebar('footer-sidebar')): ?>
+                <?php dynamic_sidebar('footer-sidebar'); ?>
             <?php endif; ?>
         </div>
     </nav>

@@ -60,6 +60,30 @@ function theme_amap_register_menus() {
 }
 
 /**
+ * Enregistrer les emplacements des sidebars (widgets)
+ */
+add_action('widgets_init', 'wpamap_register_sidebars');
+function wpamap_register_sidebars()
+{
+    register_sidebar([
+        'id' => 'home-sidebar',
+        'name' => 'Page d\'accueil',
+        'description' => 'Widgets affichés sur la page d\'accueil',
+        'before_widget' => '<div class="card mb-3">',
+        'before_title' => '<h3 class="card-header">',
+        'after_title' => '</h3><div class="card-body">',
+        'after_widget' => '</div></div>']);
+    register_sidebar([
+        'id' => 'footer-sidebar',
+        'name' => 'Pied de page',
+        'description' => 'Widgets affichés sur le pied de page',
+        'before_widget' => '<div>',
+        'before_title' => '<h5>',
+        'after_title' => '</h5>',
+        'after_widget' => '</div>',
+    ]);
+        }
+/**
  * Activer des fonctionnalités de WordPress
  */
 add_action('after_setup_theme', 'theme_amap_theme_support');

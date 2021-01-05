@@ -5,6 +5,13 @@
     <h1><?php the_title(); ?></h1>
     <?php the_content(); ?>
 <?php endwhile; ?>
+
+<aside class="col-4">
+    <?php if (is_active_sidebar('home-sidebar')): ?>
+        <?php dynamic_sidebar('home-sidebar'); ?>
+    <?php endif; ?>
+
+</aside>
 </main>
 
 
