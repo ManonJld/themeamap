@@ -64,10 +64,15 @@ function producer_register_fields(){
         ->where('post_type', '=', 'producer')
         ->add_fields([
             Field::make('text', 'address', 'Adresse'),
-            Field::make('text', 'phone_number', 'Numéro de téléphone')
+            Field::make('text', 'phone_number', 'Numéro de téléphone'),
+            Field::make_association('products', 'Produits')
+                ->set_types([[
+                        'type' => 'post',
+                        'post_type' => 'farmproduct'
+                ]])
         ]);
 
-// création du block Gutenberg
+// création du block Gutenberg - non utilisé
     Block::make('Liste des producteurs')
         ->add_fields([
             Field::make_text('title', 'Titre')

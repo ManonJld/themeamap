@@ -19,7 +19,7 @@
 
         </aside>
         <div class="col-8">
-            <section id="distribution">
+            <section id="distribution" class="mx-3 px-3">
                 <?php
                 $query = new WP_Query([
                         'post_type' => 'post',
@@ -31,8 +31,9 @@
                 ; ?>
 
                     <?php while($query->have_posts()) : $query->the_post(); ?>
-                        <div>
+                        <div class="border border-1 rounded p-3">
                             <h1><?php the_title(); ?></h1>
+                            <hr>
                             <?php the_content(); ?>
                         </div>
                     <?php endwhile; ?>
