@@ -5,7 +5,8 @@ get_header(); ?>
 
 <div class="container mt-4 d-flex justify-content-center">
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-<div class="border border-1 rounded p-5 bg-form">
+<div class="border border-1 rounded px-5 py-4 bg-form">
+    <h1 class="mb-3"><?php the_title(); ?></h1>
     <?= do_shortcode('[contact-form-7 id="' . carbon_get_the_post_meta('form_id') . '" title="Formulaire de contact"]'); ?>
 </div>
 <?php endwhile; else : ?>

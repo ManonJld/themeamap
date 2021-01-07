@@ -23,35 +23,32 @@ function crb_load() {
 add_action('wp_enqueue_scripts', 'theme_amap_enqueue_styles');
 function theme_amap_enqueue_styles() {
     //Chargement des CSS
-    wp_enqueue_style('bootstrap-css', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css');
-    wp_enqueue_style('slick-css', get_template_directory_uri() . '/slick/slick.css');
-    wp_enqueue_style('slick-theme-css', get_template_directory_uri() . '/slick/slick-theme.css', ['slick-css']);
-    wp_enqueue_style('fontawesome-css', get_template_directory_uri() . '/fontawesome/css/all.min.css');
-    wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap', false );
-    wp_enqueue_style('theme-style',
-        get_template_directory_uri() . '/style.css',
-        ['bootstrap-css', 'slick-css', 'slick-theme-css','fontawesome-css', 'wpb-google-fonts'], wp_get_theme()->get('Version'));
+//    wp_enqueue_style('bootstrap-css', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css');
+//    wp_enqueue_style('slick-css', get_template_directory_uri() . '/slick/slick.css');
+//    wp_enqueue_style('slick-theme-css', get_template_directory_uri() . '/slick/slick-theme.css', ['slick-css']);
+//    wp_enqueue_style('fontawesome-css', get_template_directory_uri() . '/fontawesome/css/all.min.css');
+//    wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap', false );
+//    wp_enqueue_style('theme-style',
+//        get_template_directory_uri() . '/style.css',
+//        ['bootstrap-css', 'slick-css', 'slick-theme-css','fontawesome-css', 'wpb-google-fonts'], wp_get_theme()->get('Version'));
 
+//    //Chargement des JS
+//    wp_enqueue_script('bootstrap-js',
+//        get_template_directory_uri() . '/bootstrap/js/bootstrap.min.js',
+//        [],
+//        wp_get_theme()->get('Version'),
+//        true // Charger le fichier JS avant la fermeture du body
+//    );
+//
+//    wp_enqueue_script('slick-js',
+//        get_template_directory_uri() . '/slick/slick.min.js',
+//        ['jquery'],
+//        wp_get_theme()->get('Version'),
+//        true // Charger le fichier JS avant la fermeture du body
+//    );
 
-    //Chargement des JS
-    wp_enqueue_script('bootstrap-js',
-        get_template_directory_uri() . '/bootstrap/js/bootstrap.min.js',
-        [],
-        wp_get_theme()->get('Version'),
-        true // Charger le fichier JS avant la fermeture du body
-    );
-
-    wp_enqueue_script('slick-js',
-        get_template_directory_uri() . '/slick/slick.min.js',
-        ['jquery'],
-        wp_get_theme()->get('Version'),
-        true // Charger le fichier JS avant la fermeture du body
-    );
-
-    wp_enqueue_script('script-js',
-        get_template_directory_uri() . '/script.js',
-//        ci dessous les dépendances qui doivent être chargée avant script-js
-        ['jquery', 'bootstrap-js', 'slick-js'],
+    wp_enqueue_script('bundle-js',
+        get_template_directory_uri() . '/dist/bundle.js',
         wp_get_theme()->get('Version'),
         true // Charger le fichier JS avant la fermeture du body
     );
