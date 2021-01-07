@@ -21,7 +21,7 @@
         <div class="col-8">
             <section id="distribution" class="mx-3 px-3">
                 <?php
-                $query = new WP_Query([
+                $query_distrib = new WP_Query([
                         'post_type' => 'post',
                         'category_name' => 'distribution',
                         'order_by' => 'date',
@@ -30,13 +30,33 @@
                 ])
                 ; ?>
 
-                    <?php while($query->have_posts()) : $query->the_post(); ?>
+                    <?php while($query_distrib->have_posts()) : $query_distrib->the_post(); ?>
                         <div class="border border-1 rounded p-3">
                             <h1><?php the_title(); ?></h1>
                             <hr>
                             <?php the_content(); ?>
                         </div>
                     <?php endwhile; ?>
+
+                <?php wp_reset_postdata(); // A mettre après une boucle avec WP_Query ?>
+            </section>
+            <section id="actualites">
+                <?php
+                $query_actu = new WP_Query([
+                    'post_type' => 'post',
+                    'category_name' => 'actualite',
+                    'order_by' => 'date',
+                    'order' => 'DESC',
+                    'post_per_page' => 1
+                ])
+                ; ?>
+
+                <?php while($query_actu->have_posts()) : $query_actu->the_post(); ?>
+                    <div class="m-3 p-3 ">
+                        <h1><?php the_title(); ?></h1>
+                        <?php the_content(); ?>
+                    </div>
+                <?php endwhile; ?>
 
                 <?php wp_reset_postdata(); // A mettre après une boucle avec WP_Query ?>
             </section>

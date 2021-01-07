@@ -18,9 +18,11 @@ $(function() {
     });
 
     $('#producer-carrousel').slick({
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        dots: true
     });
 
 });
