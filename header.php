@@ -28,7 +28,7 @@
             <?php
             wp_nav_menu( array(
                 'theme_location'    => 'menu-top',
-                'depth'             => 3,
+                'depth'             => 8,
                 'container'         => 'div',
                 'container_class'   => 'collapse navbar-collapse',
                 'container_id'      => 'bs-example-navbar-collapse-1',

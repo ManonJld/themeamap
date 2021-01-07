@@ -117,6 +117,14 @@ function theme_amap_theme_support() {
 
 }
 
+/**
+ * Ajouter des formats d'image dans WordPress
+ */
+add_action('after_setup_theme', 'wpamap_add_image_sizes');
+function wpamap_add_image_sizes() {
+    add_image_size('single-producer', 500, 400, false);
+}
+
 
 
 remove_action( 'shutdown', 'wp_ob_end_flush_all', 1 );

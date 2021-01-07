@@ -65,6 +65,9 @@ function producer_register_fields(){
         ->add_fields([
             Field::make('text', 'address', 'Adresse'),
             Field::make('text', 'phone_number', 'Numéro de téléphone'),
+            Field::make_media_gallery('photo_gallery', 'Galerie photo')
+                ->set_type(['image'])
+                ->set_duplicates_allowed(false),
             Field::make_association('products', 'Produits')
                 ->set_types([[
                         'type' => 'post',

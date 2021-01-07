@@ -28,10 +28,17 @@ $slick-loader-path: "~slick-carousel/slick/";
     src: url(https://fonts.gstatic.com/s/permanentmarker/v10/Fh4uPib9Iyv2ucM6pGQMWimMp004La2Cfw.woff2) format('woff2');
 }
 
+$green: #739815;
+$greener: #40550c;
+
 .menu-amap{
     /*font-family: 'Permanent Marker', cursive;*/
     font-family: 'Permanent Marker', serif;
     font-size: 1.5rem;
+}
+
+.font-permanent-marker{
+    font-family: "Permanent Marker", serif;
 }
 
 .header-bg-img{
@@ -52,7 +59,7 @@ $slick-loader-path: "~slick-carousel/slick/";
 }
 
 .bg-card-frontpage{
-    background-color: #739815;
+    background-color: $green;
 }
 .footer-bg{
     background-color: rgba(240, 212, 185, 0.5);
@@ -64,9 +71,27 @@ $slick-loader-path: "~slick-carousel/slick/";
 }
 
 .slick-arrow::before {
-    color: #739815;
+    color: $green;
 }
 
 .title-producer{
     text-decoration: none;
+    color: $green;
+    :hover{
+        color: $greener;
+    }
+}
+
+.title-detail-producer{
+    color: $green;
+}
+
+.btn-outline--green{
+    color: $green;
+    border-color: $green;
+
+    &:hover{
+        color: #fff;
+        background-color: $green;
+    }
 }
