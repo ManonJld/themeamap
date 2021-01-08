@@ -47,19 +47,23 @@
                     'category_name' => 'actualite',
                     'order_by' => 'date',
                     'order' => 'DESC',
-                    'post_per_page' => 1
+                    'posts_per_page' => 1
                 ])
                 ; ?>
 
                 <?php while($query_actu->have_posts()) : $query_actu->the_post(); ?>
-                    <div class="m-3 p-3 ">
+                    <div class="m-4 p-3 ">
                         <h1><?php the_title(); ?></h1>
+                        <?php the_post_thumbnail('small'); ?>
                         <?php the_content(); ?>
+
                     </div>
                 <?php endwhile; ?>
-
                 <?php wp_reset_postdata(); // A mettre après une boucle avec WP_Query ?>
             </section>
+            <div class="m-3 p-3 ">
+                <a href="<?= START_URL; ?>/category/actualite/" class="btn btn-outline--green">Toutes les actualités</a>
+            </div>
         </div>
 
     </div>
