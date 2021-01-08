@@ -12,7 +12,7 @@ if(WP_DEBUG) {
 
 function show_template() {
     global $template;
-    printf('<div style="display: inline-block;background-color: red; color: #FFF; position: fixed; bottom: 0; left: 0; z-index: 9999; padding: 5px 10px; font-size: 10px;">%s</div>',$template);
+//    printf('<div style="display: inline-block;background-color: red; color: #FFF; position: fixed; bottom: 0; left: 0; z-index: 9999; padding: 5px 10px; font-size: 10px;">%s</div>',$template);
 }
 
 add_action( 'after_setup_theme', 'crb_load' );
