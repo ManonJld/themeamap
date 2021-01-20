@@ -43,6 +43,10 @@ function farm_product_cpt_init()
         'has_archive' => true,
         'rewrite' => ['slug' => 'produit'],
         'supports' => ['title', 'thumbnail'],
+//      Cette ligne ne permet pas l'affichage par taxonomy!!
+//        'exclude_from_search' => true,
+//      cette ligne ne permet plus de voir les posts en page single mais pas non plus en page archive
+//        'publicly_queryable' => false,
     ]);
 
 
